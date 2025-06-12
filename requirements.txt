@@ -1,0 +1,7 @@
+Flask
+boto3
+prometheus-client
+psutil
+gunicorn
+werkzeug
+python-dotenv==1.0.0

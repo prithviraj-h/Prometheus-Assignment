@@ -1,0 +1,27 @@
+# Environment
+.env
+.env.*
+
+# Docker
+**/.dockerignore
+**/.env
+**/docker-compose.override.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.swp
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Temp
+tmp/
+*.tmp

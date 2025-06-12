@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>S3 Buckets</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Amazon S3 File Manager</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <div class="section">
+      <h2>Create New Bucket</h2>
+      <form action="{{ url_for('create_bucket') }}" method="post" class="form-inline">
+        <input type="text" name="bucket_name" placeholder="Bucket Name" required>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>Available Buckets</h2>
+      <ul class="bucket-list">
+        {% for bucket in buckets %}
+          <li>
+            <a href="{{ url_for('list_bucket', bucket_name=bucket.Name) }}">{{ bucket.Name }}</a>
+            <form action="{{ url_for('delete_bucket', bucket_name=bucket.Name) }}" method="post">
+              <button type="submit" class="delete-btn">Delete</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
